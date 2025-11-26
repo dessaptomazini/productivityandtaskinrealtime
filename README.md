@@ -6,6 +6,7 @@
 ⚡ Projeto de Monitoramento de Produtividade & Prazos em Tempo Real
 
 📌 Visão Geral
+
 Este projeto visou solucionar a falta de visibilidade sobre a produtividade da equipe jurídica e o controle de prazos operacionais. Foi desenvolvido um ecossistema integrado utilizando Microsoft Lists, Power Automate e Power BI para criar uma ferramenta de gestão "live" (tempo real).
 
 O sistema não apenas visualiza os dados, mas participa ativamente do fluxo de trabalho, capturando o início e o fim das tarefas automaticamente para gerar métricas precisas de eficiência.

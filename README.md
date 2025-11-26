@@ -11,8 +11,11 @@ Este projeto visou solucionar a falta de visibilidade sobre a produtividade da e
 O sistema não apenas visualiza os dados, mas participa ativamente do fluxo de trabalho, capturando o início e o fim das tarefas automaticamente para gerar métricas precisas de eficiência.
 
 🎯 Desafios Enfrentados
+
 "Caixa Preta" Operacional: Gestores não sabiam quanto tempo cada tarefa levava para ser executada ou qual era a carga de trabalho real de cada advogado em tempo real.
+
 Controle de Prazos Manual: Risco de perda de prazos devido à falta de alertas e visão centralizada.
+
 Falta de Métricas de Performance: Impossibilidade de medir o SLA (Service Level Agreement) de atendimento ou a eficiência individual.
 
 🛠️ Solução Técnica Implementada: O "Triângulo de Produtividade"

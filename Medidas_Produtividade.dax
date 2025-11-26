@@ -1,0 +1,89 @@
+% Cumprimento Prazo = 
+DIVIDE (
+    [Prazos Concluídos no Prazo],
+    [Prazos Concluídos],
+    0 // Retorna 0 se não houver prazos concluídos para evitar erro de divisão por zero)
+
+Prazos Ativos = 
+CALCULATE (
+    COUNTROWS ( 'Base de Prazos Jurídicos' ),
+    'Base de Prazos Jurídicos'[Situação] <> "Concluído / Protocolado")
+
+Prazos Caixa de Entrada = 
+CALCULATE (
+    [Prazos Ativos],
+    'Base de Prazos Jurídicos'[Situação] = "Caixa de Entrada")
+
+Prazos Concluídos = 
+CALCULATE (
+    COUNTROWS ( 'Base de Prazos Jurídicos' ),
+    'Base de Prazos Jurídicos'[Situação] = "Concluído / Protocolado",
+    NOT( ISBLANK( 'Base de Prazos Jurídicos'[Data Conclusão] ) ) // Garante que a data de conclusão existe)
+
+Prazos Concluídos Fora do Prazo = 
+CALCULATE (
+    [Prazos Concluídos],
+    FILTER (
+        'Base de Prazos Jurídicos',
+        'Base de Prazos Jurídicos'[Data Conclusão] > 'Base de Prazos Jurídicos'[Prazo]))
+
+
+Prazos Concluídos no Prazo = 
+CALCULATE (
+    [Prazos Concluídos],
+    FILTER (
+        'Base de Prazos Jurídicos',
+        'Base de Prazos Jurídicos'[Data Conclusão] <= 'Base de Prazos Jurídicos'[Prazo]))
+
+Prazos em Andamento = 
+CALCULATE (
+    [Prazos Ativos],
+    'Base de Prazos Jurídicos'[Situação] = "Em Andamento")
+
+Prazos Vencendo Hoje = 
+CALCULATE (
+    [Prazos Ativos],
+    'Base de Prazos Jurídicos'[Prazo] = TODAY ())
+
+Prazos Vencendo Próximos 7 Dias = 
+CALCULATE (
+    [Prazos Ativos],
+    'Base de Prazos Jurídicos'[Prazo] > TODAY (),
+    'Base de Prazos Jurídicos'[Prazo] <= TODAY () + 7)
+
+Tempo Médio Conclusão Total (Dias) = 
+AVERAGEX (
+    FILTER (
+        'Base de Prazos Jurídicos',
+        'Base de Prazos Jurídicos'[Situação] = "Concluído / Protocolado"
+            && NOT(ISBLANK('Base de Prazos Jurídicos'[Data Conclusão]))
+            && 'Base de Prazos Jurídicos'[Data Conclusão] >= 'Base de Prazos Jurídicos'[Data Criação]),
+    DATEDIFF (
+        'Base de Prazos Jurídicos'[Data Criação],
+        'Base de Prazos Jurídicos'[Data Conclusão],
+        DAY))
+
+Tempo Médio Execução (Dias) = 
+AVERAGEX (
+    FILTER (
+        'Base de Prazos Jurídicos',
+        NOT ( ISBLANK ( 'Base de Prazos Jurídicos'[Data Início Andamento] ) )
+            && NOT ( ISBLANK ( 'Base de Prazos Jurídicos'[Data Conclusão] ) )
+            && 'Base de Prazos Jurídicos'[Data Conclusão] >= 'Base de Prazos Jurídicos'[Data Início Andamento]),
+    DATEDIFF (
+        'Base de Prazos Jurídicos'[Data Início Andamento],
+        'Base de Prazos Jurídicos'[Data Conclusão],
+        DAY))
+
+Tempo Médio Resposta (Dias) = 
+AVERAGEX (
+    FILTER (
+        'Base de Prazos Jurídicos',
+        NOT ( ISBLANK ( 'Base de Prazos Jurídicos'[Data Início Andamento] ) )
+            && 'Base de Prazos Jurídicos'[Data Início Andamento] >= 'Base de Prazos Jurídicos'[Data Criação]),
+    DATEDIFF (
+        'Base de Prazos Jurídicos'[Data Criação],
+        'Base de Prazos Jurídicos'[Data Início Andamento],
+        DAY))
+
+Total Prazos = COUNTROWS('Base de Prazos Jurídicos')

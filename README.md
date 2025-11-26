@@ -46,6 +46,7 @@ Expansão e tratamento de registros complexos do SharePoint (usuários, datas, m
 Conversão de tipos para cálculos de data/hora precisos.
 
 🚀 Resultados e Impacto no Negócio
+
 A implementação deste ecossistema de produtividade transformou a gestão do departamento, permitindo a transição de um controle reativo (baseado em "apagar incêndios") para uma gestão proativa baseada em dados.
 
 Principais Decisões Habilitadas pelos Dashboards:

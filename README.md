@@ -4,12 +4,15 @@
 ![SharePoint](https://img.shields.io/badge/SharePoint-0078D4?style=for-the-badge&logo=microsoft-sharepoint&logoColor=white)
 
 ⚡ Real-Time Productivity & Deadline Monitoring System
+
 📌 Overview
+
 This project was designed to resolve the lack of visibility regarding the legal team's productivity and operational deadline control. I engineered an integrated ecosystem using Microsoft Lists, Power Automate, and Power BI to create a "live" management tool.
 
 The system does not merely visualize data; it actively participates in the workflow, automatically capturing task start and end times to generate precise efficiency metrics.
 
 🎯 Challenges Faced
+
 Operational "Black Box": Managers lacked real-time insight into how long tasks took to execute or the actual workload of each lawyer.
 
 Manual Deadline Tracking: High risk of missed deadlines due to the absence of centralized alerts and visibility.
@@ -17,13 +20,15 @@ Manual Deadline Tracking: High risk of missed deadlines due to the absence of ce
 Lack of Performance Metrics: Impossibility of measuring Service Level Agreements (SLAs) or individual efficiency.
 
 🛠️ Technical Solution Implemented: The "Productivity Triangle"
+
 1. Operational Backend (Microsoft Lists + Planner)
 
 Structured a SharePoint List acting as a centralized database for demand management.
-
 Integrated with Microsoft Planner for visual task distribution to the team (Kanban style).
 
-2. Process Automation (Power Automate) I developed two critical RPA (Robotic Process Automation) flows to ensure data accuracy without manual effort:
+2. Process Automation (Power Automate) 
+
+I developed two critical RPA (Robotic Process Automation) flows to ensure data accuracy without manual effort:
 
 "Execution Start" Flow: Triggered when a task moves to "In Progress". The system automatically records the start Timestamp.
 
@@ -44,6 +49,7 @@ Direct Connection: Linked to SharePoint Lists (SharePoint.Tables) for real-time 
 Data Engineering (ETL): Expansion and cleaning of complex SharePoint records (users, dates, metadata); type conversion for precise date/time calculations.
 
 🚀 Results & Business Impact
+
 Implementing this productivity ecosystem transformed departmental management, enabling a shift from reactive control (based on "firefighting") to proactive data-driven management.
 
 Key Decisions Enabled by Dashboards:
